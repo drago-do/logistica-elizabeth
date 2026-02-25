@@ -27,13 +27,9 @@ const {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script is:inline src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <script>
-      // @ts-ignore
-      lucide.createIcons();
-    </script>
     <nav class="glass sticky-nav">
       <div class="container nav-content">
         <a href="/" class="logo">
@@ -270,5 +266,9 @@ const {
         }
       }
     </style>
+    <script is:inline>
+      // @ts-ignore
+      lucide.createIcons();
+    </script>
   </body>
 </html>
