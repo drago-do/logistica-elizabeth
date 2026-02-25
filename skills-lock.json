@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "skills": {
+    "astro-a11y": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "577ccffcc43d6acd35427be5c1ff0f6fe8ef00bd6bdc03ff1cd865b23a61201c"
+    },
+    "astro-animations": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "b72d693706bd2ead3b616f98524e78b62d4177cc88eb1c277db409e4627b4e8d"
+    },
+    "astro-architecture": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "69a460627afa1af3dbbe978d57085f6d4af89f1b6c4aa89789b2b391cacf2e9e"
+    },
+    "astro-blog": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "c7057f1bb219d26c916eb24bd2e138949a711c415fa572a59476220c4f774727"
+    },
+    "astro-blog-research": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "f621acaae57d4860d70498d7e8bcdce5528f6d3f1c1ebb1cc408e0e30ca789f4"
+    },
+    "astro-blog-structure": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "3b30f9eaa7b058928ffb7557d05dc68a8e614401b4b081e272c1970a6352e6e5"
+    },
+    "astro-blog-technical": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "076f45a73bbd80614dad17d1924547acfe6447ad6212a4782d1efebaa0afc374"
+    },
+    "astro-blog-validate": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "dd056183a56e6c3ee0c4fc8cb0fa1cbf6e87da29f6ab7be0a9c4082095997baf"
+    },
+    "astro-blog-write": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "f0a0b44be49caf7916224fe417cb75cb2277896f457b9be8f007a6451b880c17"
+    },
+    "astro-components": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "bee55a04535d878f04f1549a6870951bab12c342d4f7daef547f529c442c3c99"
+    },
+    "astro-forms": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "928ab023c3222db069c43821ba5b0377abaa5fc895f1d4995f997060ceb01de9"
+    },
+    "astro-performance": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "0c41b861f47b24864843b312b38b4ee3ee5249c6f32e79f773d6246769b46751"
+    },
+    "astro-seo": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "d834d140d4fd16b91688350ed38dfd688cb854426a99036744f2cb0d8ec389df"
+    },
+    "astro-ux": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "e6336d90ae76f6ab4f4b21be7677cafac32da7af44dbac99e420491d6c76fe0c"
+    },
+    "design-tokens": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "cbf2d94b0c6379b70907af616d4cd1752a40235e80e1cb42185ce192fb968383"
+    },
+    "keyword-research": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "db5c2216ff68b2cae68d56f175a1aa4d3149fe3c5abe54b9870c0c718074198e"
+    },
+    "skill-refresh": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "941bf9d1008b3384b94a70239f344b97b83d0271ed0b8b99b580f4ffae8b7bba"
+    },
+    "skill-researcher": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "ff2927a81417ad19189788ae7a158c2e9a22fc8f9f63d826e4ad9fa4ebf3192b"
+    },
+    "skill-status-sync": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "6b923312a52782ebaa90bd39131eaac3db9405e3714ac982ec2ca8775c1b0b4c"
+    },
+    "skill-web-implementation": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "9e43b56edf037715831d34bf47d1b4cb9de29a50b70fd9f3a21a2ad36a0e0669"
+    },
+    "skill-web-research": {
+      "source": "benbrastmckie/nvim",
+      "sourceType": "github",
+      "computedHash": "857e24231ceb17aec0e28049b50fae14a231a627928af187dec9ad731863839b"
+    },
+    "social-proof": {
+      "source": "Soborbo/claudeskills",
+      "sourceType": "github",
+      "computedHash": "a41d91dea0738db0fb3d45bd4b656604ae2357653c7854528c7a517abeac058f"
+    }
+  }
+}
