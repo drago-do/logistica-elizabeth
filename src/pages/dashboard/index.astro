@@ -1,0 +1,609 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Dashboard de Analítica">
+  <main class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-accent">Logística</span>Consol
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/dashboard" class="active">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect
+              width="7"
+              height="5"
+              x="14"
+              y="3"
+              rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"
+            ></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          Inicio
+        </a>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"
+            ></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"
+            ></path>
+          </svg>
+          Inventario de QRs
+        </a>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M12 2v20"></path><path d="m17 7-5-5-5 5"></path><path
+              d="m17 17-5 5-5-5"></path>
+          </svg>
+          Logística
+        </a>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path>
+          </svg>
+          Reportes
+        </a>
+        <div class="sidebar-divider"></div>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+            ></path><circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Configuración
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Buscar por ID de Pallet o Cliente..."
+          />
+        </div>
+        <div class="user-profile">
+          <div class="notifications">
+            <span class="badge">3</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path
+                d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+            </svg>
+          </div>
+          <div class="avatar">JS</div>
+        </div>
+      </header>
+
+      <section class="dashboard-content">
+        <div class="content-header">
+          <h2>Vista General de Operaciones</h2>
+          <div class="filters">
+            <button class="btn btn-outline btn-sm">Últimos 30 días</button>
+            <button class="btn btn-primary btn-sm">Exportar CSV</button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card shadow-sm">
+            <div class="kpi-info">
+              <span>Escaneos Totales</span>
+              <h3>14,280</h3>
+              <small class="trend up">+12.5% vs mes anterior</small>
+            </div>
+            <div class="kpi-icon blue">👁️</div>
+          </div>
+          <div class="kpi-card shadow-sm">
+            <div class="kpi-info">
+              <span>Tonelaje en Tránsito</span>
+              <h3>842.5 ton</h3>
+              <small class="trend up">+4.2%</small>
+            </div>
+            <div class="kpi-icon green">🚛</div>
+          </div>
+          <div class="kpi-card shadow-sm">
+            <div class="kpi-info">
+              <span>Entregas a Tiempo</span>
+              <h3>98.2%</h3>
+              <small class="trend">Objetivo: 97.0%</small>
+            </div>
+            <div class="kpi-icon gold">⭐</div>
+          </div>
+          <div class="kpi-card shadow-sm">
+            <div class="kpi-info">
+              <span>Alertas Activas</span>
+              <h3>2</h3>
+              <small class="trend down">-3 vs ayer</small>
+            </div>
+            <div class="kpi-icon red">⚠️</div>
+          </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+          <div class="chart-container shadow-sm">
+            <h3>Tráfico Diario de Consultas</h3>
+            <canvas id="trafficChart"></canvas>
+          </div>
+          <div class="chart-container shadow-sm">
+            <h3>Distribución por Destino</h3>
+            <canvas id="destinationChart"></canvas>
+          </div>
+          <div class="chart-container shadow-sm">
+            <h3>Estatus de Cargas (Embudo)</h3>
+            <canvas id="statusChart"></canvas>
+          </div>
+          <div class="chart-container shadow-sm">
+            <h3>Uso de Dispositivos</h3>
+            <canvas id="deviceChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Advanced Analytics -->
+        <div class="bottom-grid">
+          <div class="heatmap-container shadow-sm">
+            <h3>Mapa de Calor de Escaneos</h3>
+            <div class="sim-heatmap">
+              <div
+                class="map-point"
+                style="top: 30%; left: 40%; transform: scale(3);"
+              >
+              </div>
+              <div
+                class="map-point"
+                style="top: 50%; left: 60%; transform: scale(2);"
+              >
+              </div>
+              <div
+                class="map-point"
+                style="top: 20%; left: 80%; transform: scale(1.5);"
+              >
+              </div>
+              <div
+                class="map-point"
+                style="top: 70%; left: 20%; transform: scale(1.2);"
+              >
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-2">
+              Puntos rojos indican zonas con mayor volumen de consulta de QRs.
+            </p>
+          </div>
+          <div class="log-container shadow-sm">
+            <h3>Escaneos Recientes</h3>
+            <div class="log-list">
+              <div class="log-item">
+                <span class="log-id">CON-2026-001</span>
+                <span class="log-loc">San Luis Potosí, MX</span>
+                <span class="log-time">Hace 2 mins</span>
+              </div>
+              <div class="log-item">
+                <span class="log-id">CON-2026-XYZ</span>
+                <span class="log-loc">Querétaro, MX</span>
+                <span class="log-time">Hace 15 mins</span>
+              </div>
+              <div class="log-item">
+                <span class="log-id">CON-2026-005</span>
+                <span class="log-loc">Guadalajara, MX</span>
+                <span class="log-time">Hace 42 mins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Chart.js CDN -->
+  <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script is:inline>
+    // Traffic Chart (Line)
+    const ctxTraffic = document.getElementById("trafficChart").getContext("2d");
+    new Chart(ctxTraffic, {
+      type: "line",
+      data: {
+        labels: ["01 Feb", "05 Feb", "10 Feb", "15 Feb", "20 Feb", "25 Feb"],
+        datasets: [
+          {
+            label: "Escaneos",
+            data: [400, 650, 480, 890, 720, 1050],
+            borderColor: "#3B82F6",
+            backgroundColor: "rgba(59, 130, 246, 0.1)",
+            fill: true,
+            tension: 0.4,
+          },
+        ],
+      },
+      options: { responsive: true, maintainAspectRatio: false },
+    });
+
+    // Destination Chart (Doughnut)
+    const ctxDest = document
+      .getElementById("destinationChart")
+      .getContext("2d");
+    new Chart(ctxDest, {
+      type: "doughnut",
+      data: {
+        labels: ["Norte", "Bajío", "Sureste", "Costa"],
+        datasets: [
+          {
+            data: [45, 25, 15, 15],
+            backgroundColor: ["#1E3A8A", "#3B82F6", "#93C5FD", "#BFDBFE"],
+          },
+        ],
+      },
+      options: { responsive: true, maintainAspectRatio: false },
+    });
+
+    // Status Chart (Bar)
+    const ctxStatus = document.getElementById("statusChart").getContext("2d");
+    new Chart(ctxStatus, {
+      type: "bar",
+      data: {
+        labels: ["Almacén", "Cargado", "Tránsito", "Entregado"],
+        datasets: [
+          {
+            label: "Pallets",
+            data: [120, 85, 240, 180],
+            backgroundColor: "#10B981",
+          },
+        ],
+      },
+      options: { responsive: true, maintainAspectRatio: false },
+    });
+
+    // Device Chart (Pie)
+    const ctxDevice = document.getElementById("deviceChart").getContext("2d");
+    new Chart(ctxDevice, {
+      type: "pie",
+      data: {
+        labels: ["Android", "iOS", "Desktop"],
+        datasets: [
+          {
+            data: [65, 25, 10],
+            backgroundColor: ["#10B981", "#6366F1", "#F59E0B"],
+          },
+        ],
+      },
+      options: { responsive: true, maintainAspectRatio: false },
+    });
+  </script>
+
+  <style>
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      background-color: var(--color-bg-alt);
+    }
+
+    .dashboard-sidebar {
+      background-color: var(--color-primary);
+      color: white;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-header {
+      margin-bottom: 3rem;
+    }
+    .sidebar-header .logo {
+      color: white;
+      border-bottom: 2px solid var(--color-accent);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      color: #9ca3af;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .sidebar-nav a.active svg {
+      color: var(--color-accent);
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 1.5rem 0;
+    }
+
+    .dashboard-main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard-header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .search-bar input {
+      width: 400px;
+      background-color: var(--color-bg-alt);
+      border: none;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .notifications {
+      position: relative;
+      color: var(--color-text-muted);
+    }
+
+    .notifications .badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: var(--color-error);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 5px;
+      border-radius: 10px;
+    }
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      background-color: var(--color-secondary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .dashboard-content {
+      padding: 2rem;
+    }
+
+    .content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .kpi-info span {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .kpi-info h3 {
+      font-size: 1.75rem;
+      margin: 0.25rem 0;
+    }
+
+    .trend {
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .trend.up {
+      color: var(--color-success);
+    }
+    .trend.down {
+      color: var(--color-error);
+    }
+
+    .kpi-icon {
+      font-size: 1.5rem;
+      width: 45px;
+      height: 45px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kpi-icon.blue {
+      background-color: #dbeafe;
+    }
+    .kpi-icon.green {
+      background-color: #d1fae5;
+    }
+    .kpi-icon.gold {
+      background-color: #fef3c7;
+    }
+    .kpi-icon.red {
+      background-color: #fee2e2;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .chart-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chart-container h3 {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .chart-container canvas {
+      flex-grow: 1;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .heatmap-container,
+    .log-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+    }
+
+    .sim-heatmap {
+      height: 300px;
+      background-image: url("https://api.mapbox.com/styles/v1/mapbox/light-v11/static/-102.3,23.5,4,0/600x300?access_token=MOCK");
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius-sm);
+      position: relative;
+      overflow: hidden;
+      filter: grayscale(0.5);
+    }
+
+    .map-point {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(239, 68, 68, 0.4);
+      border-radius: 50%;
+      filter: blur(5px);
+    }
+
+    .log-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .log-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem;
+      background-color: var(--color-bg-alt);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+    }
+
+    .log-id {
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .log-time {
+      color: var(--color-text-muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 1200px) {
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .charts-grid,
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Layout>

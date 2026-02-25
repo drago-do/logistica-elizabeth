@@ -1,0 +1,269 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Solución estratégica para envíos de gran volumen con visibilidad tecnológica.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Logística Consolidada</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="glass sticky-nav">
+      <div class="container nav-content">
+        <a href="/" class="logo">
+          <span class="logo-accent">Logística</span>Consol
+        </a>
+        <div class="nav-links">
+          <a href="#beneficios">Beneficios</a>
+          <a href="#como-funciona">Cómo Funciona</a>
+          <a href="#tecnologia">Tecnología</a>
+          <a href="/dashboard" class="btn btn-outline btn-sm">Dashboard</a>
+          <a href="#cotiza" class="btn btn-primary btn-sm">Cotiza Ahora</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-accent">Logística</span>Consol
+          </a>
+          <p>
+            Optimizando la cadena de suministro global con tecnología de punta.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Servicios</h4>
+          <a href="#">Carga LTL</a>
+          <a href="#">Grupaje</a>
+          <a href="#">Rastreo en Tiempo Real</a>
+        </div>
+        <div class="footer-links">
+          <h4>Empresa</h4>
+          <a href="#">Nosotros</a>
+          <a href="#">Contacto</a>
+          <a href="#">Privacidad</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p>ventas@logisticaconsol.com</p>
+          <p>+52 (55) 1234-5678</p>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>
+          &copy; {new Date().getFullYear()} Logística Consol. Todos los derechos
+          reservados.
+        </p>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Widget -->
+    <a
+      href="https://wa.me/5211234567890?text=Hola,%20vengo%20de%20la%20web%20y%20me%20gustaría%20recibir%20atención%20personalizada%20sobre%20un%20servicio%20de%20consolidación."
+      class="whatsapp-widget"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-message-circle"
+        ><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+      </svg>
+    </a>
+
+    <style>
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        transition: var(--transition);
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+      }
+
+      .logo-accent {
+        color: var(--color-secondary);
+        font-weight: 400;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a:not(.btn) {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+      }
+
+      .nav-links a:not(.btn):hover {
+        color: var(--color-primary);
+      }
+
+      .btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .mobile-menu-btn span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: var(--color-primary);
+      }
+
+      .footer {
+        background-color: var(--color-primary);
+        color: white;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer h1,
+      .footer h2,
+      .footer h3,
+      .footer h4 {
+        color: white;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .footer-links a {
+        color: #9ca3af;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-accent);
+      }
+
+      .footer-brand p {
+        color: #9ca3af;
+        margin-top: 1rem;
+        max-width: 300px;
+      }
+
+      .footer-contact p {
+        color: #9ca3af;
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+        text-align: center;
+        color: #6b7280;
+        font-size: 0.875rem;
+      }
+
+      .whatsapp-widget {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+        transition: var(--transition);
+      }
+
+      .whatsapp-widget:hover {
+        transform: scale(1.1);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .footer .logo {
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+    </style>
+  </body>
+</html>

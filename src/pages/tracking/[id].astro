@@ -1,0 +1,489 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { id: "CON-2026-001" } },
+    { params: { id: "CON-2026-002" } },
+    { params: { id: "CON-2026-XYZ" } },
+  ];
+}
+
+const { id } = Astro.params;
+
+// Mock data based on the ID
+const shipments = {
+  "CON-2026-001": {
+    status: "En Tránsito",
+    type: "LTL (Carga consolidada)",
+    origin: "CDMX, Santa Fe",
+    destination: "Nuevo Laredo, Tamps.",
+    eta: "2026-02-26 14:00",
+    weight: "1,250 kg",
+    company: "Logística Consol S.A.",
+    history: [
+      { time: "2026-02-24 09:00", event: "Recolección en planta" },
+      { time: "2026-02-24 18:30", event: "Consolidación en Hub Central" },
+      { time: "2026-02-25 04:00", event: "Salida a ruta principal" },
+    ],
+  },
+  "CON-2026-XYZ": {
+    status: "Entregado",
+    type: "Urgente",
+    origin: "Monterrey, NL",
+    destination: "Querétaro, Qro.",
+    eta: "2026-02-24 10:30",
+    weight: "450 kg",
+    company: "Logística Consol S.A.",
+    history: [
+      { time: "2026-02-23 14:00", event: "Recolección" },
+      { time: "2026-02-24 10:30", event: "Entregado con éxito" },
+    ],
+  },
+};
+
+const data = shipments[id] || shipments["CON-2026-001"];
+---
+
+<Layout title={`Rastreo: ${id}`}>
+  <main class="tracking-page">
+    <div class="container">
+      <header class="tracking-header">
+        <div class="header-main">
+          <span class="tracking-id">Folio: {id}</span>
+          <div
+            class={`status-badge ${data.status
+              .toLowerCase()
+              .replace(" ", "-")}`}
+          >
+            {data.status}
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline btn-sm">Compartir Rastreo</button>
+          <button class="btn btn-primary btn-sm">Reportar Incidencia</button>
+        </div>
+      </header>
+
+      <div class="tracking-grid">
+        <!-- Left Column: Map & Evidence -->
+        <div class="tracking-main">
+          <div class="map-container shadow">
+            <div class="map-overlay">
+              <div class="map-pings">
+                <div class="ping"></div>
+              </div>
+              <div class="map-card glass">
+                <h4>Ubicación Actual</h4>
+                <p>Carretera Federal 57, San Luis Potosí</p>
+                <small>Última actualización: hace 5 mins</small>
+              </div>
+            </div>
+            <!-- Simulated Night Mode Map -->
+            <div class="sim-map"></div>
+          </div>
+
+          <div class="evidence-section">
+            <h3>Evidencia de Carga</h3>
+            <div class="evidence-gallery">
+              <div class="evidence-item">
+                <img
+                  src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&q=80&w=400"
+                  alt="Evidence 1"
+                />
+                <span>Foto de Estiba</span>
+              </div>
+              <div class="evidence-item">
+                <img
+                  src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=400"
+                  alt="Evidence 2"
+                />
+                <span>Sello de Seguridad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Details & Docs -->
+        <aside class="tracking-sidebar">
+          <div class="detail-card shadow-sm">
+            <h3>Detalles del Envío</h3>
+            <div class="detail-row">
+              <span class="label">Tipo</span>
+              <span class="value">{data.type}</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Peso</span>
+              <span class="value">{data.weight}</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Responsable</span>
+              <span class="value">{data.company}</span>
+            </div>
+            <hr />
+            <div class="route-info">
+              <div class="route-point">
+                <div class="point-icon origin"></div>
+                <div>
+                  <small>Origen</small>
+                  <p>{data.origin}</p>
+                </div>
+              </div>
+              <div class="route-line"></div>
+              <div class="route-point">
+                <div class="point-icon destination"></div>
+                <div>
+                  <small>Destino</small>
+                  <p>{data.destination}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-card shadow-sm">
+            <h3>Bitácora de Eventos</h3>
+            <div class="timeline">
+              {
+                data.history.map((item) => (
+                  <div class="timeline-item">
+                    <div class="time">{item.time}</div>
+                    <div class="event">{item.event}</div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="docs-card shadow-sm">
+            <h3>Documentación</h3>
+            <div class="doc-links">
+              <button class="doc-btn">
+                <span>📄 Carta Porte.pdf</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                  ></path><polyline points="7 10 12 15 17 10"></polyline><line
+                    x1="12"
+                    x2="12"
+                    y1="15"
+                    y2="3"></line>
+                </svg>
+              </button>
+              <button class="doc-btn">
+                <span>📦 Packing List.pdf</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                  ></path><polyline points="7 10 12 15 17 10"></polyline><line
+                    x1="12"
+                    x2="12"
+                    y1="15"
+                    y2="3"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .tracking-page {
+      padding: 2rem 0 5rem;
+      background-color: var(--color-bg-alt);
+      min-height: 90vh;
+    }
+
+    .tracking-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .tracking-id {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-right: 1.5rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-badge.en-tránsito {
+      background-color: #dbeafe;
+      color: #1e40af;
+    }
+
+    .status-badge.entregado {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .tracking-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+    }
+
+    .map-container {
+      height: 500px;
+      background-color: #1a1a1a;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .sim-map {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://api.mapbox.com/styles/v1/mapbox/dark-v11/static/-102.3,23.5,4,0/800x500?access_token=MOCK_TOKEN"); /* This is a placeholder visual */
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.7) contrast(1.2);
+    }
+
+    .map-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 2rem;
+      pointer-events: none;
+    }
+
+    .map-card {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      width: 250px;
+    }
+
+    .map-card h4 {
+      margin-bottom: 0.5rem;
+    }
+    .map-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .ping {
+      position: absolute;
+      top: 60%;
+      left: 55%;
+      width: 15px;
+      height: 15px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 10px rgba(0, 255, 157, 0.2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(0, 255, 157, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 157, 0);
+      }
+    }
+
+    .tracking-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .detail-card,
+    .timeline-card,
+    .docs-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+    }
+
+    .detail-card h3,
+    .timeline-card h3,
+    .docs-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.75rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .detail-row .label {
+      color: var(--color-text-muted);
+    }
+    .detail-row .value {
+      font-weight: 600;
+    }
+
+    .route-info {
+      margin-top: 1.5rem;
+    }
+
+    .route-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .point-icon {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 6px;
+      border: 2px solid white;
+    }
+
+    .point-icon.origin {
+      background-color: var(--color-accent);
+    }
+    .point-icon.destination {
+      background-color: var(--color-primary);
+    }
+
+    .route-line {
+      width: 2px;
+      height: 30px;
+      background-color: var(--color-border);
+      margin-left: 5px;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--color-border);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+    }
+
+    .timeline-item .time {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-item .event {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .doc-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .doc-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background-color: var(--color-bg-alt);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .doc-btn:hover {
+      background-color: #e5e7eb;
+    }
+
+    .evidence-section h3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .evidence-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .evidence-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .evidence-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+    }
+
+    .evidence-item span {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 968px) {
+      .tracking-grid {
+        grid-template-columns: 1fr;
+      }
+      .tracking-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  </style>
+</Layout>

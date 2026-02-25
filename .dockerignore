@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+.vscode
+.agent
+.agents
+*.md
+Dockerfile
+.dockerignore
+npm-debug.log
