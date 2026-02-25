@@ -6,8 +6,15 @@ import Layout from "../layouts/Layout.astro";
   <main>
     <!-- Hero Section -->
     <section class="hero">
+      <div class="hero-bg-container parallax-bg">
+        <img
+          src="/logistics_hero_bg.jpg"
+          alt="Logistics Background"
+          class="hero-bg-image"
+        />
+      </div>
       <div class="hero-overlay"></div>
-      <div class="container hero-content fade-in">
+      <div class="container hero-content reveal">
         <h1>Maximiza tu Eficiencia Logística con Consolidación Inteligente</h1>
         <p>
           Optimiza tu cadena de suministro con nuestro sistema robusto de carga
@@ -42,9 +49,11 @@ import Layout from "../layouts/Layout.astro";
     <!-- Value Proposition -->
     <section id="beneficios" class="benefits">
       <div class="container text-center">
-        <h2 class="section-title">¿Por qué elegir nuestra consolidación?</h2>
+        <h2 class="section-title reveal">
+          ¿Por qué elegir nuestra consolidación?
+        </h2>
         <div class="benefits-grid">
-          <div class="benefit-card">
+          <div class="benefit-card reveal delay-100">
             <div class="benefit-icon">
               <i data-lucide="trending-down"></i>
             </div>
@@ -54,7 +63,7 @@ import Layout from "../layouts/Layout.astro";
               aprovechamiento máximo de espacios de carga.
             </p>
           </div>
-          <div class="benefit-card">
+          <div class="benefit-card reveal delay-200">
             <div class="benefit-icon">
               <i data-lucide="shield-check"></i>
             </div>
@@ -64,7 +73,7 @@ import Layout from "../layouts/Layout.astro";
               protegida de extremo a extremo.
             </p>
           </div>
-          <div class="benefit-card">
+          <div class="benefit-card reveal delay-300">
             <div class="benefit-icon">
               <i data-lucide="clock"></i>
             </div>
@@ -74,7 +83,7 @@ import Layout from "../layouts/Layout.astro";
               nosotros ya tenemos la red lista.
             </p>
           </div>
-          <div class="benefit-card">
+          <div class="benefit-card reveal delay-400">
             <div class="benefit-icon">
               <i data-lucide="globe"></i>
             </div>
@@ -95,7 +104,7 @@ import Layout from "../layouts/Layout.astro";
           <div class="how-text">
             <h2 class="section-title">Proceso Simplificado</h2>
             <div class="steps">
-              <div class="step">
+              <div class="step reveal-left delay-100">
                 <div class="step-num">01</div>
                 <div class="step-info">
                   <h3>Recolección Programada</h3>
@@ -105,7 +114,7 @@ import Layout from "../layouts/Layout.astro";
                   </p>
                 </div>
               </div>
-              <div class="step">
+              <div class="step reveal-left delay-200">
                 <div class="step-num">02</div>
                 <div class="step-info">
                   <h3>Consolidación en Hub</h3>
@@ -115,7 +124,7 @@ import Layout from "../layouts/Layout.astro";
                   </p>
                 </div>
               </div>
-              <div class="step">
+              <div class="step reveal-left delay-300">
                 <div class="step-num">03</div>
                 <div class="step-info">
                   <h3>Entrega Final y Evidencia</h3>
@@ -141,14 +150,14 @@ import Layout from "../layouts/Layout.astro";
     <!-- Technology -->
     <section id="tecnologia" class="tech-section">
       <div class="container">
-        <div class="tech-grid">
+        <div class="tech-grid reveal">
           <div class="tech-card glass">
             <img
               src="/logistics_dashboard_mockup.jpg"
               alt="Dashboard Preview"
-              class="tech-img"
+              class="tech-img reveal-left delay-200"
             />
-            <div class="tech-content">
+            <div class="tech-content reveal-right delay-400">
               <h2 class="section-title">Tecnología estilo Samsara</h2>
               <p>
                 No somos solo transporte, somos una plataforma tecnológica.
@@ -174,7 +183,7 @@ import Layout from "../layouts/Layout.astro";
 
     <!-- Quotation Form -->
     <section id="cotiza" class="quote-section">
-      <div class="container narrow">
+      <div class="container narrow reveal">
         <div class="quote-card shadow-lg">
           <h2 class="text-center">Calcula tu Ahorro</h2>
           <p class="text-center text-muted">
@@ -293,7 +302,7 @@ import Layout from "../layouts/Layout.astro";
   <style>
     .hero {
       height: 85vh;
-      background-image: url("/logistics_hero_bg.jpg");
+      background-color: var(--color-primary);
       background-size: cover;
       background-position: center;
       position: relative;

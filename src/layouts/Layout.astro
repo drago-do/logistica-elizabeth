@@ -267,8 +267,40 @@ const {
       }
     </style>
     <script is:inline>
+      // Lucide Icons Initialization
       // @ts-ignore
       lucide.createIcons();
+
+      // Reveal on Scroll Logic
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".reveal, .reveal-left, .reveal-right")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Simple Parallax Effect
+      const heroBg = document.querySelector(".parallax-bg");
+      if (heroBg) {
+        window.addEventListener("scroll", () => {
+          const scrolled = window.scrollY;
+          // @ts-ignore
+          heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+        });
+      }
     </script>
   </body>
 </html>
