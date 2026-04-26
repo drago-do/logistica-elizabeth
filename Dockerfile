@@ -11,16 +11,17 @@ COPY . .
 RUN npm run build
 
 # Production Stage
-FROM nginx:stable-alpine AS production
+FROM node:22-alpine AS production
+WORKDIR /app
 
-# Copy custom nginx configuration if needed, or use default
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy necessary files from build stage
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package.json ./package.json
 
-# Copy static files from build stage
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build /app/dist /usr/share/nginx/html
+# Environment variables
+ENV HOST=0.0.0.0
+ENV PORT=4321
+EXPOSE 4321
 
-# Expose port 80
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "./dist/server/entry.mjs"]
