@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* Primary Colors - Samsara Inspired */
   --color-primary: #001a3d; /* Deep Navy */
