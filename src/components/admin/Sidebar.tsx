@@ -37,7 +37,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col h-screen sticky top-0" id="sidebar">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-brand-accent rounded-lg flex items-center justify-center">
             <BarChart3 className="text-white w-5 h-5" />
           </div>
           <span className="text-xl font-bold text-white tracking-tight">Enterprise BI</span>
@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className={cn(
                 "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group",
                 activeTab === item.id 
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-900/20" 
+                  ? "bg-brand text-white shadow-lg shadow-brand/20" 
                   : "hover:bg-slate-800 hover:text-white"
               )}
               id={`nav-${item.id}`}

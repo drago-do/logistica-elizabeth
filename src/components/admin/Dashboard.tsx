@@ -106,16 +106,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                 trend="up"
               />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2">
-                <VisitasCharts data={visitas} />
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <h3 className="text-lg font-semibold mb-4">
-                  Resumen de Ventas
-                </h3>
-                <VentasCharts data={ventas} />
-              </div>
+            <div className="grid grid-cols-1 gap-6">
+              <VisitasCharts data={visitas} />
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+              <h3 className="text-lg font-semibold mb-4">Resumen de Ventas</h3>
+              <VentasCharts data={ventas} />
             </div>
           </div>
         );
@@ -156,7 +152,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
               </p>
               <p className="text-xs text-slate-500">Administrador</p>
             </div>
-            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
+            <div className="w-10 h-10 bg-brand/10 rounded-full flex items-center justify-center text-brand font-bold">
               JD
             </div>
           </div>

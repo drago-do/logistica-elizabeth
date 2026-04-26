@@ -137,6 +137,32 @@ const isLanding = pathname === "/" || pathname === "/en" || pathname === "/en/";
       </svg>
     </a>
 
+    <!-- Secret Admin Button -->
+    <a
+      href="/dashboardAdmin"
+      id="secret-admin-btn"
+      style="display: none; position: fixed; bottom: 2rem; left: 2rem; z-index: 9999;"
+      class="btn btn-primary"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="inline-icon"
+      >
+        <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+        <path d="M3 9h18"></path>
+        <path d="M9 21V9"></path>
+      </svg>
+      Dashboard Admin
+    </a>
+
     <style>
       .sticky-nav {
         position: sticky;
@@ -326,6 +352,24 @@ const isLanding = pathname === "/" || pathname === "/en" || pathname === "/en/";
           const scrolled = window.scrollY;
           // @ts-ignore
           heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+        });
+      }
+
+      // Secret Admin Button Logic
+      const adminBtn = document.getElementById("secret-admin-btn");
+      if (adminBtn) {
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Tab") {
+            adminBtn.style.display = "inline-flex";
+          }
+        });
+        document.addEventListener("keyup", (e) => {
+          if (e.key === "Tab") {
+            adminBtn.style.display = "none";
+          }
+        });
+        window.addEventListener("blur", () => {
+          adminBtn.style.display = "none";
         });
       }
     </script>
