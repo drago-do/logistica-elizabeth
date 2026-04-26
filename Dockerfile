@@ -17,6 +17,7 @@ FROM nginx:stable-alpine AS production
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy static files from build stage
+RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
