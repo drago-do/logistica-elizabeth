@@ -120,6 +120,7 @@ section {
 
 .btn-outline:hover {
   border-color: var(--color-bg);
+  color: var(--color-bg);
   background-color: var(--color-text);
 }
 
@@ -220,11 +221,6 @@ section {
   box-shadow: 0 10px 20px -5px rgba(245, 158, 11, 0.4);
 }
 
-.glass:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-3px);
-}
 
 /* Hero Parallax Container */
 .hero {

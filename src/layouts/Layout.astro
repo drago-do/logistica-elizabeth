@@ -4,16 +4,21 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title,
   description = "Solución estratégica para envíos de gran volumen con visibilidad tecnológica.",
+  lang = "es",
 } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const isLanding = pathname === "/" || pathname === "/en" || pathname === "/en/";
 ---
 
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -36,11 +41,27 @@ const {
           <span class="logo-accent">Logística</span>Consol
         </a>
         <div class="nav-links">
-          <a href="#beneficios">Beneficios</a>
-          <a href="#como-funciona">Cómo Funciona</a>
-          <a href="#tecnologia">Tecnología</a>
+          <a href="#beneficios">{lang === "en" ? "Benefits" : "Beneficios"}</a>
+          <a href="#como-funciona"
+            >{lang === "en" ? "How it Works" : "Cómo Funciona"}</a
+          >
+          <a href="#tecnologia">{lang === "en" ? "Technology" : "Tecnología"}</a
+          >
+          {
+            isLanding && (
+              <a
+                href={lang === "es" ? "/en" : "/"}
+                class="btn btn-outline btn-sm"
+                aria-label="Cambiar idioma"
+              >
+                {lang === "es" ? "EN" : "ES"}
+              </a>
+            )
+          }
           <a href="/dashboard" class="btn btn-outline btn-sm">Dashboard</a>
-          <a href="#cotiza" class="btn btn-primary btn-sm">Cotiza Ahora</a>
+          <a href="#cotiza" class="btn btn-primary btn-sm"
+            >{lang === "en" ? "Quote Now" : "Cotiza Ahora"}</a
+          >
         </div>
         <button class="mobile-menu-btn" aria-label="Menu">
           <span></span>
@@ -82,8 +103,7 @@ const {
       </div>
       <div class="container footer-bottom">
         <p>
-          &copy; {new Date().getFullYear()} Logística Consol. Todos los derechos
-          reservados.
+          &copy; {new Date().getFullYear()} Logística Consol. Todos los derechos reservados.
         </p>
       </div>
     </footer>
