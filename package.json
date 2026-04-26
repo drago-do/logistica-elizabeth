@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^10.0.6",
     "@astrojs/react": "^5.0.4",
     "@tailwindcss/vite": "^4.2.4",
     "@types/react": "^19.2.14",
@@ -20,7 +21,11 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "recharts": "^3.8.1",
+    "resend": "^6.12.2",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
   }
 }

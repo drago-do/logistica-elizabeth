@@ -190,51 +190,54 @@ import Layout from "../layouts/Layout.astro";
             Obtén una cotización estimada en segundos.
           </p>
 
-          <form class="quote-form">
+          <form class="quote-form" id="quoteForm">
             <div class="form-group">
               <label>Correo Corporativo</label>
-              <input type="email" placeholder="ejemplo@empresa.com" required />
+              <input type="email" id="email" placeholder="ejemplo@empresa.com" required />
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label>Origen</label>
-                <select>
-                  <option>CDMX</option>
-                  <option>Monterrey</option>
-                  <option>Guadalajara</option>
-                  <option>Nuevo Laredo</option>
+                <select id="origin">
+                  <option value="CDMX">CDMX</option>
+                  <option value="Monterrey">Monterrey</option>
+                  <option value="Guadalajara">Guadalajara</option>
+                  <option value="Nuevo Laredo">Nuevo Laredo</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Destino</label>
-                <select>
-                  <option>Nuevo Laredo</option>
-                  <option>Querétaro</option>
-                  <option>Veracruz</option>
-                  <option>San Luis Potosí</option>
+                <select id="destination">
+                  <!-- Destinos dinámicos -->
                 </select>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>Peso Total (kg)</label>
-                <input type="number" placeholder="1000" />
+                <label>Cantidad de Pallets (1-5)</label>
+                <select id="pallets">
+                  <option value="1">1 Pallet</option>
+                  <option value="2">2 Pallets</option>
+                  <option value="3">3 Pallets</option>
+                  <option value="4">4 Pallets</option>
+                  <option value="5">5 Pallets</option>
+                </select>
               </div>
               <div class="form-group">
-                <label>Dimensiones (Pallets)</label>
-                <input type="number" placeholder="2" />
+                <label>Peso Estimado (kg)</label>
+                <input type="number" id="weight" placeholder="1000" />
               </div>
             </div>
 
             <div class="quote-result" id="quoteResult" style="display: none;">
               <p>Precio Estimado:</p>
-              <span class="price">$12,450.00 MXN</span>
+              <span class="price" id="displayPrice">$0.00 MXN</span>
               <p class="disclaimer">
                 *Sujeto a cambios tras verificación física.
               </p>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block" id="calcBtn"
+            <button type="submit" class="btn btn-primary btn-block" id="calcBtn"
               >Calcular y Enviar Cotización</button
             >
           </form>
@@ -285,16 +288,95 @@ import Layout from "../layouts/Layout.astro";
   </main>
 
   <script>
-    // Simple calculator logic for the prototype
-    const calcBtn = document.getElementById("calcBtn");
-    const quoteResult = document.getElementById("quoteResult");
+    import { PRICES } from "../data/prices";
 
-    if (calcBtn) {
-      calcBtn.addEventListener("click", () => {
-        (quoteResult as HTMLElement).style.display = "block";
-        calcBtn.textContent = "Cotización enviada a tu correo";
-        calcBtn.style.backgroundColor = "var(--color-primary)";
-        calcBtn.style.color = "white";
+    const quoteForm = document.getElementById("quoteForm") as HTMLFormElement;
+    const originSelect = document.getElementById("origin") as HTMLSelectElement;
+    const destinationSelect = document.getElementById("destination") as HTMLSelectElement;
+    const palletsSelect = document.getElementById("pallets") as HTMLSelectElement;
+    const calcBtn = document.getElementById("calcBtn") as HTMLButtonElement;
+    const quoteResult = document.getElementById("quoteResult") as HTMLElement;
+    const displayPrice = document.getElementById("displayPrice") as HTMLElement;
+
+    function updateDestinations() {
+      const origin = originSelect.value as keyof typeof PRICES;
+      const destinations = PRICES[origin].destinations;
+      
+      destinationSelect.innerHTML = destinations
+        .map(d => `<option value="${d}">${d}</option>`)
+        .join("");
+      
+      calculatePrice();
+    }
+
+    function calculatePrice() {
+      const origin = originSelect.value as keyof typeof PRICES;
+      const pallets = parseInt(palletsSelect.value) as 1|2|3|4|5;
+      
+      const price = PRICES[origin].rates[pallets];
+      
+      const formattedPrice = new Intl.NumberFormat("es-MX", {
+        style: "currency",
+        currency: "MXN",
+      }).format(price);
+
+      displayPrice.textContent = formattedPrice;
+      quoteResult.style.display = "block";
+    }
+
+    if (originSelect && palletsSelect) {
+      originSelect.addEventListener("change", updateDestinations);
+      palletsSelect.addEventListener("change", calculatePrice);
+      
+      // Initial load
+      updateDestinations();
+    }
+
+    if (quoteForm) {
+      quoteForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const emailInput = document.getElementById("email") as HTMLInputElement;
+        const formData = {
+          email: emailInput.value,
+          origin: originSelect.value,
+          destination: destinationSelect.value,
+          pallets: palletsSelect.value,
+        };
+
+        calcBtn.disabled = true;
+        const originalText = calcBtn.textContent;
+        calcBtn.textContent = "Enviando...";
+
+        try {
+          const response = await fetch("/api/quote", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          if (response.ok) {
+            calcBtn.textContent = "¡Cotización enviada!";
+            calcBtn.style.backgroundColor = "#10b981"; // emerald-500
+            calcBtn.style.color = "white";
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+              calcBtn.disabled = false;
+              calcBtn.textContent = originalText;
+              calcBtn.style.backgroundColor = "";
+            }, 3000);
+          } else {
+            throw new Error("Error en el envío");
+          }
+        } catch (err) {
+          console.error(err);
+          calcBtn.textContent = "Error al enviar. Intenta de nuevo.";
+          calcBtn.disabled = false;
+          setTimeout(() => {
+            calcBtn.textContent = originalText;
+          }, 3000);
+        }
       });
     }
   </script>
