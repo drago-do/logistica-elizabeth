@@ -21,7 +21,7 @@ COPY --from=build /app/package.json ./package.json
 
 # Environment variables
 ENV HOST=0.0.0.0
-ENV PORT=4321
-EXPOSE 4321
+ENV PORT=80
+EXPOSE 80
 
 CMD ["node", "./dist/server/entry.mjs"]
