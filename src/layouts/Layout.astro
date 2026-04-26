@@ -54,6 +54,13 @@ const isLanding = pathname === "/" || pathname === "/en" || pathname === "/en/";
                 class="btn btn-outline btn-sm"
                 aria-label="Cambiar idioma"
               >
+                <img
+                  src={lang === "es" ? "/eu.png" : "/mxn.png"}
+                  alt={lang === "es" ? "English" : "Español"}
+                  width="20"
+                  height="20"
+                  class="inline-icon mr-6"
+                />
                 {lang === "es" ? "EN" : "ES"}
               </a>
             )
