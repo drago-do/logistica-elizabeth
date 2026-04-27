@@ -359,12 +359,12 @@ const isLanding = pathname === "/" || pathname === "/en" || pathname === "/en/";
       const adminBtn = document.getElementById("secret-admin-btn");
       if (adminBtn) {
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Tab") {
+          if (e.key === "0") {
             adminBtn.style.display = "inline-flex";
           }
         });
         document.addEventListener("keyup", (e) => {
-          if (e.key === "Tab") {
+          if (e.key === "0") {
             adminBtn.style.display = "none";
           }
         });
